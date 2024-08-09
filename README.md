@@ -36,6 +36,22 @@ Este projeto é destinado ao aprendizado da linguagem python e do framework Djan
 
 # Dicas para o processo de desenvolvimento:
 
+- Comandos importantes:
+    - Verificar comandos disponíveis do manage.py:
+        ```
+        python manage.py help
+        ```
+
+    - Criar um novo projeto:
+        ```
+        python manage.py startproject '<nome do projeto>'
+        ```
+
+    - Criar um novo app:
+        ```
+        python manage.py startapp '<nome do app>'
+        ```
+
 - Quando criar um novo model:
     - Lembre-se :
         > *Todo modelo é uma classe Python, subclasse de django.db.models.Model.*
