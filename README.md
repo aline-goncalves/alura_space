@@ -19,6 +19,11 @@ python -m virtualenv .venv
 pip install -r .\requirements.txt
 ```
 
+- Colete os arquivos estáticos para utilização do Django:
+```
+python manage.py collectstatic
+```
+
 - Inicie o servidor:
 ```
 python manage.py runserver
