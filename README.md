@@ -107,6 +107,8 @@ Este projeto é destinado ao aprendizado da linguagem python e do framework Djan
         ]
         ```
 
+    - Na pasta templates, criar um diretório para cada app, contendo suas respectivas páginas HTML e partials
+    
     - Nos templates, usar blocos de conteúdo para evitar a repetição de código e facilitar manutentação
         ```
         <body>
