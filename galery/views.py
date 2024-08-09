@@ -8,7 +8,7 @@ def imagem(request, photo_id):
     return render(request, 'galery/imagem.html', {"photo": return_photo(photo_id)})
 
 def return_photos():
-    return Photo.objects.all()    
+    return Photo.objects.order_by("created_at").filter(published=True)    
 
 def return_photo(photo_id):
     return get_object_or_404(Photo, pk=photo_id)  

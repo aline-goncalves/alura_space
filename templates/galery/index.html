@@ -14,7 +14,11 @@
                                 {% for photo in cards %}
                                     <li class="card">
                                         <a href="{% url 'imagem' photo.id %}">
-                                            <img class="card__imagem" src="{% static '' %}{{ photo.image }}" alt="foto">
+                                            {% if photo.image == "" or photo.image == null %}
+                                                <img class="card__imagem" src="{% static '/assets/imagens/galeria/Modal.png' %}" alt="foto">
+                                            {% else %}
+                                                <img class="card__imagem" src="{{ photo.image.url }}" alt="foto">
+                                            {% endif %}
                                         </a>
                                         <span class="card__tag">{{ photo.category.name }}</span>
                                         <div class="card__info">
