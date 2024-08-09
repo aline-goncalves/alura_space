@@ -44,6 +44,13 @@ Este projeto é destinado ao aprendizado da linguagem python e do framework Djan
         ```
         python manage.py makemigrations
         ```
+    
+    - Lembre-se de adicionar o novo modelo no django admin: arquivo 'nomedoapp'/admin.py
+        
+        **(exemplo)**
+        ```
+        admin.site.register(Photo)
+        ```
 
 - Quando criar um novo arquivo html:
     - Lembre-se de carregar os arquivos estáticos no início do arquivo:
