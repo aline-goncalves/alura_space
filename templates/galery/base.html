@@ -13,9 +13,9 @@
         <link rel="stylesheet" href="{% static '/styles/style.css' %}">
     </head>
 
-    <body id="main-body">
+    <body>
         {% include 'galery/partials/_header.html' %}
         {% block content %}{% endblock %}
-        {% include 'galery/partials/_footer.html' %}
+        {% include 'partials/_footer.html' %}
     </body>
 </html>
