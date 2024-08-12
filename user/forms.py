@@ -50,7 +50,7 @@ class RegisterForm(forms.Form):
     username=forms.CharField(
         label="Usuário",
         required=True,
-        max_length=100,
+        max_length=100,        
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -80,3 +80,15 @@ class RegisterForm(forms.Form):
             }
         )
     )
+    
+    #precisa iniciar com 'clean' - padrão django
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        
+        if username:
+            username = username.strip() #remove espaços do início e do fim
+            
+            if ' ' in username:
+                raise forms.ValidationError('Não é possível inserir epaços no campo Usuário!')
+            else:
+                return username

@@ -1,13 +1,26 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from galery.models import Photo, Category
+from django.contrib import messages
 
 def index(request):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Usuário não logado!')
+        return redirect('login')
+    
     return render(request, 'galery/index.html', {"tags": return_categories(),"cards": return_photos()})
 
 def photo(request, photo_id):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Usuário não logado!')
+        return redirect('login')
+    
     return render(request, 'galery/imagem.html', {"photo": return_photo(photo_id)})
 
 def search(request):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Usuário não logado!')
+        return redirect('login')
+    
     return render(request, 'galery/search.html', {"cards": return_photos_search(request)})
 
 def return_photos_search(request):

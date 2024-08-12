@@ -5,7 +5,7 @@ class PhotosList(admin.ModelAdmin):
     list_display = ("id", "title", "subtitle", "card_tag", "image", "category", "published")
     list_display_links = ("id", "title", "subtitle", "card_tag", "image", "category")
     search_fields = ("title", "subtitle", "description", "card_tag")
-    list_filter = ("category","published")
+    list_filter = ("category","published", "user")
     list_editable = ("published",)
     list_per_page = 1
 
