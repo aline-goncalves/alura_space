@@ -1,6 +1,6 @@
 from django.urls import path
-from user.views import login, register, logout
-from galery.views import index
+from apps.user.views import login, register, logout
+from apps.galery.views import index
 
 urlpatterns = [
     path('register', register, name='register'),
