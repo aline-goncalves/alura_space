@@ -22,7 +22,7 @@ def doLogin(request, form):
     if user is not None:
         auth.login(request, user)
         messages.success(request, f'{username} logado com sucesso!')
-        return redirect('index')
+        return redirect('home')
     else:
         messages.error(request, 'Erro ao tentar realizar o login. Confira os dados informados!')
         return redirectLoginForm()

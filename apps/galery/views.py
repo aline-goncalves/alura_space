@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from apps.galery.models import Photo, Category
+from apps.galery.forms import PhotoForm
 from django.contrib import messages
 
-def index(request):
+def home(request):
     if not request.user.is_authenticated:
         messages.error(request, 'Usuário não logado!')
         return redirect('login')
@@ -21,7 +22,43 @@ def search(request):
         messages.error(request, 'Usuário não logado!')
         return redirect('login')
     
-    return render(request, 'galery/search.html', {"cards": return_photos_search(request)})
+    return render(request, 'galery/index.html', {"cards": return_photos_search(request)})
+
+def new_photo(request):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Usuário não logado!')
+        return redirect('login')
+    
+    form = PhotoForm
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        
+        if form.is_valid:
+            form.save()
+            messages.success(request, 'Nova imagem cadastrada com sucesso!')
+            return redirect('home')
+            
+    return render(request, 'galery/new_photo.html', {'form': form})
+
+def edit_photo(request, photo_id):
+    photo = Photo.objects.get(id=photo_id)
+    form = PhotoForm(instance=photo)
+    
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES, instance=photo)
+        if form.is_valid:
+            form.save()
+            messages.success(request, 'Imagem editada com sucesso!')   
+            return redirect('photo', photo_id)
+    
+    return render(request, 'galery/edit_photo.html', {'form': form, 'photo_id': photo_id})
+
+def delete_photo(request, photo_id):
+    photo = Photo.objects.get(id=photo_id)
+    deleted_photo_title = photo.title
+    photo.delete()
+    messages.success(request, f'A deleção da foto {deleted_photo_title} foi realizada com sucesso!')
+    return redirect('home')
 
 def return_photos_search(request):
     photos = Photo.objects.all()
@@ -33,6 +70,10 @@ def return_photos_search(request):
         
     return photos
 
+def return_photos_tag_filter(request, tag_id):
+    photos = Photo.objects.order_by('created_at').filter(category_id=tag_id, published=True)
+    return render(request, 'galery/index.html', {"tags": return_categories(), "cards":photos})
+    
 def return_photos():
     return Photo.objects.order_by("created_at").filter(published=True)    
 

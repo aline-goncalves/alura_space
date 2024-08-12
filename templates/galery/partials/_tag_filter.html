@@ -6,7 +6,9 @@
         <ul class="tags__lista">
             {% if tags %}
                 {% for tag in tags %}
-                    <li class="tags__tag">{{ tag.name }}</li>
+                    <li class="tags__tag">
+                        <a href={% url 'category_filter' tag.id %} class="btn" style="color: #C9C9C9">{{ tag.name }}</a>
+                    </li>
                 {% endfor %}
             {% else %}
             {% endif %}
