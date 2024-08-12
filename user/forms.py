@@ -36,7 +36,7 @@ class RegisterForm(forms.Form):
             }
         )
     )
-    email=forms.CharField(
+    email=forms.EmailField(
         label="E-mail",
         required=True,
         max_length=100,

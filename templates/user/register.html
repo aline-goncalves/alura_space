@@ -8,7 +8,7 @@
     </section>
         <main class="principal">
             <section class="galeria" style="justify-content: center; margin-bottom: 1.5rem">
-                <form action="" method="">
+                <form action="{% url 'register' %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         {% for field in form.visible_fields %}    
@@ -18,6 +18,11 @@
                             </div>
                         {% endfor %}
                     </div>
+                    {% for message in messages %}
+                        <div class="alert alert-primary">
+                            <p id="message">{{ message }}</p>
+                        </div>
+                    {% endfor %}
                     <div class="col-12 text-center">
                         <button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Criar sua conta</button>
                     </div>
