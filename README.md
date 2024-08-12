@@ -34,6 +34,15 @@ Este projeto é destinado ao aprendizado da linguagem python e do framework Djan
     python manage.py runserver
     ```
 
+# Pendências a serem implementadas:
+    - Gravar usuário logado na tabela 'photo';
+    - CRUD de categorias;
+    - Favoritar imagem;
+    - Página principal com a visualização das imagens de todos usuários (quando não há usuário logado);
+    - Menu principal (quando não há usuário logado);
+    - Menu dinâmico, alterando as opções conforme usuário logado ou não.
+
+
 # Dicas para o processo de desenvolvimento:
 
 - Comandos importantes:
